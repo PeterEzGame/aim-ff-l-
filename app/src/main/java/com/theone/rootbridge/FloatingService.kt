@@ -23,20 +23,17 @@ class FloatingService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        
-        // --- TÍNH NĂNG 1: CHỐNG VĂNG GAME (ANTI-CRASH) ---
-        // Thiết lập bộ bắt lỗi toàn cục để ứng dụng không bị đóng đột ngột (Force Close) khi Shizuku hoặc tiến trình ngầm gặp xung đột với Anti-Cheat
+
+        // Chống văng ứng dụng (Anti-Crash Global Handler)
         Thread.setDefaultUncaughtExceptionHandler { _, throwable ->
-            // Ghi log hoặc tự động phục hồi an toàn tại đây
             throwable.printStackTrace()
         }
 
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
-        
         val layoutInflater = LayoutInflater.from(this)
         floatingView = layoutInflater.inflate(R.layout.floating_menu, null)
 
-        val PARAMS_TYPE = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val paramsType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
             WindowManager.LayoutParams.TYPE_PHONE
@@ -45,7 +42,7 @@ class FloatingService : Service() {
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
-            PARAMS_TYPE,
+            paramsType,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
             PixelFormat.TRANSLUCENT
         )
@@ -54,7 +51,6 @@ class FloatingService : Service() {
         params.x = 100
         params.y = 100
 
-        // Xử lý kéo thả menu nổi trên màn hình
         val titleView = floatingView?.findViewById<View>(R.id.tvTitle)
         titleView?.setOnTouchListener(object : View.OnTouchListener {
             private var initialX = 0
@@ -82,7 +78,6 @@ class FloatingService : Service() {
             }
         })
 
-        // Xử lý nút bật/tắt tính năng trong menu
         val switchAim = floatingView?.findViewById<Switch>(R.id.switchAim)
         switchAim?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
