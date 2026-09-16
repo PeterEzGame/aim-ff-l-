@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#121212"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="16dp">
 
     <!-- Tiêu đề -->
     <TextView
@@ -69,4 +69,5 @@
         android:text="KÍCH HOẠT HARI-DWG"
         android:textColor="#000000"
         android:textStyle="bold" />
+
 </LinearLayout>
