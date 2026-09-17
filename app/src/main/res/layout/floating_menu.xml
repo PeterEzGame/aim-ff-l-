@@ -2,51 +2,65 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#99000000"
+    android:background="#88000000"
+    android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:elevation="10dp">
+    android:padding="8dp">
 
-    <!-- Tiêu đề menu có thể dùng làm điểm chạm để kéo -->
+    <!-- Tiêu đề thu gọn -->
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="HariDwg AIM [PRO]"
+        android:text="HariDwg"
         android:textColor="#00E676"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="6dp"/>
-
-    <!-- Các công tắc tính năng -->
-    <Switch
-        android:id="@+id/switchAim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aim Assist Pro"
-        android:textColor="#FFFFFF"
-        android:textSize="11sp"
-        android:thumbTint="#00E676"/>
-
-    <Switch
-        android:id="@+id/switchAntiCrash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bảo vệ Chống Văng"
-        android:textColor="#FFFFFF"
-        android:textSize="11sp"
-        android:thumbTint="#00E676"
-        android:checked="true"/>
-        
-    <Button
-        android:id="@+id/btnCloseMenu"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_marginTop="6dp"
-        android:backgroundTint="#FF5252"
-        android:text="Ẩn Menu"
-        android:textColor="#FFFFFF"
         android:textSize="10sp"
-        android:padding="0dp"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- 4 Nút chức năng tròn dạng mô phỏng ảnh mẫu -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_margin="3dp"
+        android:backgroundTint="#D32F2F"
+        android:text="LOGIN"
+        android:textColor="#FFFFFF"
+        android:textSize="9sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnNinja"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_margin="3dp"
+        android:backgroundTint="#D32F2F"
+        android:text="NINJA"
+        android:textColor="#FFFFFF"
+        android:textSize="9sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnFreeze"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_margin="3dp"
+        android:backgroundTint="#D32F2F"
+        android:text="FREEZE"
+        android:textColor="#FFFFFF"
+        android:textSize="8sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnTele"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_margin="3dp"
+        android:backgroundTint="#D32F2F"
+        android:text="TELE"
+        android:textColor="#FFFFFF"
+        android:textSize="9sp"
+        android:textStyle="bold" />
+
 </LinearLayout>
