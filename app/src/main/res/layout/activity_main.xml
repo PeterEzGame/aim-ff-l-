@@ -6,35 +6,35 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Tiêu đề -->
+    <!-- Tiêu đề yêu cầu -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="HariDwg AIM"
+        android:text="Ib dis : mfxa_."
         android:textColor="#00E676"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Hỗ trợ FF Thường &amp; FF Max (OB mới nhất)"
+        android:text="HariDwg AIM &amp; Fake Lag Engine"
         android:textColor="#B0BEC5"
         android:textSize="12sp"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Trạng thái Shizuku -->
+    <!-- Trạng thái Shizuku & Overlay -->
     <TextView
         android:id="@+id/tvStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#1E1E1E"
         android:padding="12dp"
-        android:text="Trạng thái Shizuku: Đang kiểm tra..."
+        android:text="Trạng thái: Đang kiểm tra quyền hệ thống..."
         android:textColor="#FF5252"
-        android:textSize="14sp" />
+        android:textSize="13sp" />
 
     <!-- Chọn phiên bản Game -->
     <RadioGroup
@@ -59,14 +59,14 @@
             android:textColor="#FFFFFF" />
     </RadioGroup>
 
-    <!-- Nút kích hoạt -->
+    <!-- Nút kích hoạt fix quyền và bật menu -->
     <Button
         android:id="@+id/btnActivate"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#00E676"
-        android:text="KÍCH HOẠT HARI-DWG"
+        android:text="CẤP QUYỀN &amp; KHỞI CHẠY MENU"
         android:textColor="#000000"
         android:textStyle="bold" />
 
