@@ -22,7 +22,6 @@ android {
         }
     }
     
-    // Đổi tên file APK xuất ra thành haridwg.apk
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             outputFileName = "haridwg.apk"
