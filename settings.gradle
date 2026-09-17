@@ -10,9 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://api.xposed.info/' }
         maven { url 'https://jitpack.io' }
     }
 }
 
-rootProject.name = "RootBridge"
+rootProject.name = "aim-ff-l-"
 include ':app'
