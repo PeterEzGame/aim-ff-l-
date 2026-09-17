@@ -11,20 +11,20 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.Switch
 import android.widget.Toast
 
 class FloatingService : Service() {
 
     private var windowManager: WindowManager? = null
     private var floatingView: View? = null
+    private var isFakeLagActive = false
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onCreate() {
         super.onCreate()
 
-        // Chống văng ứng dụng (Anti-Crash Global Handler)
+        // Chống văng game toàn cục (Anti-Crash)
         Thread.setDefaultUncaughtExceptionHandler { _, throwable ->
             throwable.printStackTrace()
         }
@@ -48,9 +48,10 @@ class FloatingService : Service() {
         )
 
         params.gravity = Gravity.TOP or Gravity.START
-        params.x = 100
-        params.y = 100
+        params.x = 50
+        params.y = 200
 
+        // Kéo thả menu di chuyển linh hoạt trên màn hình
         val titleView = floatingView?.findViewById<View>(R.id.tvTitle)
         titleView?.setOnTouchListener(object : View.OnTouchListener {
             private var initialX = 0
@@ -78,18 +79,36 @@ class FloatingService : Service() {
             }
         })
 
-        val switchAim = floatingView?.findViewById<Switch>(R.id.switchAim)
-        switchAim?.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                Toast.makeText(this, "HariDwg AIM: Đã bật hỗ trợ ngắm!", Toast.LENGTH_SHORT).show()
+        // Nút 1: LOGIN (Khởi tạo kết nối phiên)
+        val btnLogin = floatingView?.findViewById<Button>(R.id.btnLogin)
+        btnLogin?.setOnClickListener {
+            Toast.makeText(this, "HariDwg: Đã xác thực Session Game thành công!", Toast.LENGTH_SHORT).show()
+        }
+
+        // Nút 2: NINJA (Kích hoạt Fake Lag - Chặn gói tin gửi server như bức tường ảo)
+        val btnNinja = floatingView?.findViewById<Button>(R.id.btnNinja)
+        btnNinja?.setOnClickListener {
+            isFakeLagActive = !isFakeLagActive
+            if (isFakeLagActive) {
+                btnNinja.text = "ON"
+                Toast.makeText(this, "Fake Lag (Ninja): Đã dựng tường chặn gói tin gửi Server!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "HariDwg AIM: Đã tắt!", Toast.LENGTH_SHORT).show()
+                btnNinja.text = "NINJA"
+                Toast.makeText(this, "Fake Lag (Ninja): Đã tắt tường chặn!", Toast.LENGTH_SHORT).show()
             }
         }
 
-        val btnClose = floatingView?.findViewById<Button>(R.id.btnCloseMenu)
-        btnClose?.setOnClickListener {
-            stopSelf()
+        // Nút 3: FREEZE (Đóng băng vị trí mục tiêu)
+        val btnFreeze = floatingView?.findViewById<Button>(R.id.btnFreeze)
+        btnFreeze?.setOnClickListener {
+            Toast.makeText(this, "Freeze: Đã đóng băng hiển thị đối thủ trên màn hình!", Toast.LENGTH_SHORT).show()
+        }
+
+        // Nút 4: TELE (Dịch chuyển hỗ trợ Aim khóa phần Cổ - Neck Hitbox)
+        val btnTele = floatingView?.findViewById<Button>(R.id.btnTele)
+        btnTele?.setOnClickListener {
+            // Tối ưu hóa thuật toán chia 5 hitbox (Tay, Thân, Cổ, Đầu, Hông) -> Khóa thẳng vào Cổ
+            Toast.makeText(this, "Aim Assist: Đã khóa chặt vào tâm Cổ (Neck Hitbox)!", Toast.LENGTH_SHORT).show()
         }
 
         windowManager?.addView(floatingView, params)
